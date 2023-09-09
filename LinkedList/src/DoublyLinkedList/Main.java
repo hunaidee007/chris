@@ -14,14 +14,21 @@ public class Main {
         doublyLinkedList.add(400);
         doublyLinkedList.add(500);
         doublyLinkedList.add(600);
+        doublyLinkedList.add(400);
 
         doublyLinkedList.display();
+        System.out.println("---");
 
-        doublyLinkedList.displayInReverse();
+
+/*  doublyLinkedList.displayInReverse();
 
         doublyLinkedList.deleteAnElement(500);
 
+        doublyLinkedList.display();*/
+        doublyLinkedList.addNodeAtLocation(800,3);
+
         doublyLinkedList.display();
+        System.out.println("---");
 
 
 

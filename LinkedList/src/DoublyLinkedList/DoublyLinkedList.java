@@ -50,13 +50,39 @@ public class DoublyLinkedList {
     public void deleteAnElement(int element) {
         var pointer = head;
 
-        while(pointer.data != element) {
+        while (pointer.data != element) {
             pointer = pointer.next;
         }
         System.out.println("Found : " + pointer.data + " ");
         pointer.prev.next = pointer.next;
         pointer.next.prev = pointer.prev;
         System.out.println("Deleted..");
+
+    }
+
+    public void addNodeAtLocation(int data, int location) {
+        Node pointer = head;
+        int index = 1;
+
+        // to get to the previous node based on location
+        location --;
+
+        // traverse till the previous location
+        while (location != index) {
+            pointer = pointer.next;
+            index++; //index= index+1;
+        }
+        System.out.println("Found : " + pointer.data + " ");
+
+        Node newNode = new Node(data);
+
+
+        // Insert the new Node
+       newNode.prev = pointer;
+       newNode.next = pointer.next;
+
+       pointer.next = newNode;
+       newNode.next.prev=newNode;
 
     }
 
