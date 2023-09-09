@@ -54,9 +54,19 @@ public class DoublyLinkedList {
             pointer = pointer.next;
         }
         System.out.println("Found : " + pointer.data + " ");
-        pointer.prev.next = pointer.next;
-        pointer.next.prev = pointer.prev;
+        deleteElement(pointer);
         System.out.println("Deleted..");
+
+    }
+
+    public void deleteElement(Node elementToBeDeleted) {
+        elementToBeDeleted.prev.next = elementToBeDeleted.next;
+        if (elementToBeDeleted.next !=null) {
+            elementToBeDeleted.next.prev = elementToBeDeleted.prev;
+        } else {
+            // if it is last element to be deleted
+            elementToBeDeleted.prev =null;
+        }
 
     }
 
@@ -84,6 +94,36 @@ public class DoublyLinkedList {
        pointer.next = newNode;
        newNode.next.prev=newNode;
 
+    }
+
+
+    public void removeDuplicate() {
+        Node pointer = head;
+
+        SinglyLinkedList.Node secondNode = null;
+        //loop till last node
+        while (pointer != null) {
+            int count = 0;
+            int elementToBeSearched = pointer.data;
+
+            Node tempPointer = head;
+            while (tempPointer != null) {
+                if (tempPointer.data == elementToBeSearched) {
+                    if (count == 1) {
+                        // delete here
+                        deleteElement(tempPointer);
+
+                    }
+                    count++;
+                }
+                tempPointer = tempPointer.next;
+            }
+
+            pointer = pointer.next;
+
+            System.out.println("Data: " + elementToBeSearched + ", found count : " + count);
+
+        }
     }
 
 
