@@ -51,4 +51,50 @@ public class LinkedList {
 
 
     }
+
+    public void deleteThisNode(Node nodeToBeDeleted) {
+
+        Node previousNode = head;
+        while (previousNode.next != nodeToBeDeleted) {
+            previousNode = previousNode.next;
+        }
+
+        previousNode.next = nodeToBeDeleted.next;
+        nodeToBeDeleted.next = null;
+        nodeToBeDeleted = null;
+
+
+    }
+
+
+    public void removeDuplicate() {
+        Node pointer = head;
+
+        Node secondNode = null;
+        //loop till last node
+        while (pointer != null) {
+            int count = 0;
+            int elementToBeSearched = pointer.data;
+
+            Node tempPointer = head;
+            while (tempPointer != null) {
+                if (tempPointer.data == elementToBeSearched) {
+                    if (count == 1) {
+                        // delete here
+                        deleteThisNode(tempPointer);
+
+                    }
+                    count++;
+                }
+                tempPointer = tempPointer.next;
+            }
+
+            pointer = pointer.next;
+
+            System.out.println("Data: " + elementToBeSearched + ", found count : " + count);
+
+        }
+
+
+    }
 }

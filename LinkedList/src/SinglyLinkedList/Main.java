@@ -10,12 +10,22 @@ public class Main {
         linkedList.insertAtTheEnd(20);
         linkedList.insertAtTheEnd(30);
         linkedList.insertAtTheEnd(40);
+        linkedList.insertAtTheEnd(30);
+        linkedList.insertAtTheEnd(20);
         linkedList.insertAtTheEnd(50);
+        linkedList.insertAtTheEnd(20);
         linkedList.insertAtTheEnd(60);
 
-        //linkedList.display();
-        linkedList.displayInReverse();
+
+        linkedList.display();
+        //linkedList.displayInReverse();
         System.out.println("Done!");
+
+        linkedList.removeDuplicate();
+
+        System.out.println("Display!");
+
+        linkedList.display();
     }
 
 }
