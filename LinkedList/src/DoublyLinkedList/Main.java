@@ -15,11 +15,14 @@ public class Main {
         doublyLinkedList.add(500);
         doublyLinkedList.add(600);
 
-        //doublyLinkedList.display();
+        doublyLinkedList.display();
 
         doublyLinkedList.displayInReverse();
 
-        System.out.println("done");
+        doublyLinkedList.deleteAnElement(500);
+
+        doublyLinkedList.display();
+
 
 
     }

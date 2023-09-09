@@ -24,10 +24,10 @@ public class DoublyLinkedList {
     public void display() {
         var pointer = head;
         while (pointer.next != null) {
-            System.out.println(pointer.data + " ");
+            System.out.print(pointer.data + " ");
             pointer = pointer.next;
         }
-        System.out.println(pointer.data + " ");
+        System.out.print(pointer.data + " ");
     }
 
     public void displayInReverse() {
@@ -37,14 +37,27 @@ public class DoublyLinkedList {
         while (last.next != null) {
             last = last.next;
         }
-        System.out.println(last.data + " ");
+        System.out.print(last.data + " ");
         another = last;
 
         // Assign Another to Previous till Another is at Head
         do {
             another = another.prev;
-            System.out.println(another.data + " ");
+            System.out.print(another.data + " ");
         } while (another.prev != null);
+    }
+
+    public void deleteAnElement(int element) {
+        var pointer = head;
+
+        while(pointer.data != element) {
+            pointer = pointer.next;
+        }
+        System.out.println("Found : " + pointer.data + " ");
+        pointer.prev.next = pointer.next;
+        pointer.next.prev = pointer.prev;
+        System.out.println("Deleted..");
+
     }
 
 
