@@ -6,26 +6,31 @@ public class Main {
         System.out.println("Hello and welcome!");
 
         LinkedList linkedList = new LinkedList();
-        linkedList.insertAtTheEnd(10);
-        linkedList.insertAtTheEnd(20);
-        linkedList.insertAtTheEnd(30);
-        linkedList.insertAtTheEnd(40);
-        linkedList.insertAtTheEnd(30);
-        linkedList.insertAtTheEnd(20);
-        linkedList.insertAtTheEnd(50);
-        linkedList.insertAtTheEnd(20);
-        linkedList.insertAtTheEnd(60);
+        linkedList.insertAtTheEnd(111);
+        linkedList.insertAtTheEnd(222);
+        linkedList.insertAtTheEnd(333);
+        linkedList.insertAtTheEnd(4444);
+
+        linkedList.insertAtTheEnd(4444);
+        linkedList.insertAtTheEnd(333);
+        linkedList.insertAtTheEnd(222);
+        linkedList.insertAtTheEnd(111);
+
 
 
         linkedList.display();
+        System.out.println(linkedList.size);
+
+        System.out.println("---");
+        System.out.println("isPalydrome : " + linkedList.isPalyndrome());
         //linkedList.displayInReverse();
-        System.out.println("Done!");
+      //  System.out.println("Done!");
 
-        linkedList.removeDuplicate();
+      //  linkedList.removeDuplicate();
 
-        System.out.println("Display!");
+//System.out.println("Display!");
 
-        linkedList.display();
+//linkedList.display();
     }
 
 }

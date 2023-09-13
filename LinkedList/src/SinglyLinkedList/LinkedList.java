@@ -4,6 +4,8 @@ public class LinkedList {
 
     Node head;
 
+    int size;
+
     public void insertAtTheEnd(int var) {
 
         if (head == null) {
@@ -17,6 +19,8 @@ public class LinkedList {
             Node nextNode = new Node(var);
             last.next = nextNode;
         }
+
+        size++;
     }
 
     public void display() {
@@ -96,5 +100,29 @@ public class LinkedList {
         }
 
 
+    }
+
+    public boolean isPalyndrome() {
+
+        Node leftPointer = head;
+
+        Node rightPointer = head;
+
+
+        for (int count = 0; count < size / 2; count++) {
+
+            for (int rightCounter = 1 ; rightCounter != (size-count) ; rightCounter ++ ) {
+                rightPointer = rightPointer.next;
+            }
+            System.out.println(leftPointer.data + " - " + rightPointer.data);
+            if(leftPointer.data != rightPointer.data) {
+                return false;
+            }
+            leftPointer = leftPointer.next;
+            rightPointer = head;
+        }
+
+
+        return true;
     }
 }
