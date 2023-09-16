@@ -6,17 +6,17 @@ public class TestStack {
         System.out.println("hi");
 
 
-      /*  Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
         stack.add(234);
         stack.add(444);
         stack.add(222);
         stack.add(555);
 
+        System.out.println("Did we find it? : " + searchStack(stack,111));
 
+       // topToBottom(stack);
 
-        topToBottom(stack);
-
-        Stack<Double> doubleStack = new Stack<Double>();
+     /*   Stack<Double> doubleStack = new Stack<Double>();
         doubleStack.add(234.5);
         doubleStack.add(444.5);
         doubleStack.add(222.5);
@@ -24,7 +24,7 @@ public class TestStack {
 
         bottomToTop(doubleStack);*/
 
-        Stack<String> stringStack = new Stack<String>();
+      /*  Stack<String> stringStack = new Stack<String>();
         stringStack.add("DDD");
         stringStack.add("CCC");
         stringStack.add("BBB");
@@ -34,7 +34,7 @@ public class TestStack {
         System.out.println("Flipping the stack");
         Stack flippedStack = flipStack(stringStack);
 
-        topToBottom(flippedStack);
+        topToBottom(flippedStack);*/
 
 
     }
@@ -75,4 +75,20 @@ public class TestStack {
         stack = newStack;
         return  stack;
     }
+
+    public static boolean searchStack(Stack<Integer> stack, int target) {
+        Node<Integer> pointer = stack.head;
+
+        // loop till the last element
+        while(pointer !=null) {
+            if(pointer.data.intValue() == target) {
+                return true;
+            }
+
+            pointer = pointer.next;
+        }
+        return false;
+    }
+
+
 }
