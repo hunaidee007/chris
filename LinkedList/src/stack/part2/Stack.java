@@ -38,12 +38,16 @@ public class Stack {
         return size > 0 ? false : true;
     }
 
-    public void pop() {
+    public String pop() {
+
+        String dataToBePoped = head.data;
         Node pointer = head;
 
         head = pointer.next;
         pointer.next = null;
         pointer = null;
+
+        return dataToBePoped;
 
     }
 }

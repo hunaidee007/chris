@@ -20,57 +20,50 @@ public class TestStack {
 
         stack.peek();*/
 
-        isBalanced("({)}");
+       //System.out.println("isBalanced:" + isBalanced("{}"));
+        System.out.println(isBalanced("(())"));// # True
+        System.out.println(isBalanced("{{[]}}"));// # True
+        System.out.println(isBalanced("()[]{}"));// # True
+        System.out.println(isBalanced("({[})"));// # False
 
 
     }
 
 
     public static boolean isBalanced(String expression) {
+
         Stack stack = new Stack();
+        // { ( [] ) }
+        char[] chars = expression.toCharArray();
 
-        String curlyBrackets[] = {"{", "}"};
-        String roundBrackets[] = {"(", ")"};
-       // String squareBrackets[] = {"[", "]"};
+        for (int count = 0; count < chars.length; count++) {
 
+            String charToBeCompared = String.valueOf(chars[count]);
+            // If it is an open bracket add it to top of stack
+            if (charToBeCompared.equals("{")
+                    || charToBeCompared.equals("[")
+                    || charToBeCompared.equals("(")) {
 
-        for (int count = 0; count < expression.length(); count++) {
-            char charAtIndex = expression.charAt(count);
-            stack.push(String.valueOf(charAtIndex));
+                stack.push(charToBeCompared);
+            // if it is a closing bracket compare it with top of stack
+            } else if (charToBeCompared.equals("}")
+                    || charToBeCompared.equals("]")
+                    || charToBeCompared.equals(")")) {
 
-        }
-       //stack.peek();
-
-        Node pointer = stack.head;
-        while (pointer != null) {
-
-            String bracket = pointer.data;
-            // corresponding bracket
-            // Find type of bracket
-
-            String typeOfBracket = "";
-            String openingOrClosing = "";
-
-            if (curlyBrackets[0].equals(bracket)) {
-                typeOfBracket = "curly";
-                openingOrClosing = "opening";
-            } else  if (curlyBrackets[1].equals(bracket)) {
-                typeOfBracket = "curly";
-                openingOrClosing = "closing";
-            } else if (roundBrackets[0].equals(bracket)) {
-                typeOfBracket = "round";
-                openingOrClosing = "opening";
-            } else  if (roundBrackets[1].equals(bracket)) {
-                typeOfBracket = "round";
-                openingOrClosing = "closing";
+                String topElement = stack.pop();
+                if (topElement.equals("[") && charToBeCompared.equals("]")
+                        || topElement.equals("{") && charToBeCompared.equals("}")
+                        || topElement.equals("(") && charToBeCompared.equals(")")) {
+                    // do nothing
+                } else {
+                    return false;
+                }
             }
-
-            System.out.println(pointer.data + " - " + typeOfBracket + " - " + openingOrClosing);
-
-            pointer = pointer.next;
         }
+
 
         return true;
-
     }
+
+
 }
