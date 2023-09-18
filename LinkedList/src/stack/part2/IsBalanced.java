@@ -40,8 +40,11 @@ class Stack {
         return size > 0 ? false : true;
     }
 
-    public String pop() {
+    public String pop() throws Exception {
 
+        if(isEmpty()) {
+            throw new Exception("Stack is empty");
+        }
         String dataToBePoped = head.data;
         Node pointer = head;
 
@@ -55,7 +58,7 @@ class Stack {
 }
 
 public class IsBalanced {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("hi");
 
        /* Stack stack = new Stack();
@@ -83,9 +86,11 @@ public class IsBalanced {
     }
 
 
-    public static boolean isBalanced(String expression) {
+    public static boolean isBalanced(String expression) throws Exception {
 
         Stack stack = new Stack();
+
+
         // { ( [] ) }
         char[] chars = expression.toCharArray();
 
