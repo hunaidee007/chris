@@ -1,7 +1,60 @@
 package stack.part2;
+ class Node {
+    String data;
+    Node next;
+}
+class Stack {
+
+    Node head;
+
+    int size;
+
+    public void push(String data) {
 
 
-public class TestStack {
+        Node tempNode = new Node();
+        tempNode.data = data;
+        if (head == null) {
+            head = tempNode;
+        } else {
+            tempNode.next = head;
+            head = tempNode;
+        }
+
+        size++;
+    }
+
+    public void peek() {
+        Node pointer = head;
+        if (size > 0) {
+            do {
+                System.out.println(pointer.data);
+                pointer = pointer.next;
+            } while (pointer != null);
+        }
+
+
+    }
+
+    public boolean isEmpty() {
+        return size > 0 ? false : true;
+    }
+
+    public String pop() {
+
+        String dataToBePoped = head.data;
+        Node pointer = head;
+
+        head = pointer.next;
+        pointer.next = null;
+        pointer = null;
+
+        return dataToBePoped;
+
+    }
+}
+
+public class IsBalanced {
     public static void main(String[] args) {
         System.out.println("hi");
 

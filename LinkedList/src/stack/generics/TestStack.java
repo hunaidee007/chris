@@ -1,5 +1,42 @@
 package stack.generics;
 
+class Node<K> {
+    K data;
+    Node next;
+}
+
+class Stack<T> {
+
+    Node<T> head;
+
+    int size;
+
+    public void add(T data) {
+
+
+        Node tempNode = new Node();
+        tempNode.data = data;
+        if (head == null) {
+            head = tempNode;
+        } else {
+            tempNode.next = head;
+            head = tempNode;
+        }
+
+        size++;
+    }
+
+    public void display() {
+        Node pointer = head;
+
+        do {
+            System.out.println(pointer.data);
+            pointer = pointer.next;
+        } while (pointer != null);
+
+    }
+
+}
 
 public class TestStack {
     public static void main(String[] args) {
@@ -12,7 +49,7 @@ public class TestStack {
         stack.add(222);
         stack.add(555);
 
-        System.out.println("Did we find it? : " + searchStack(stack,111));
+        System.out.println("Did we find it? : " + searchStack(stack,444));
 
        // topToBottom(stack);
 
