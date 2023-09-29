@@ -7,14 +7,7 @@ public class TestBubble {
     public static void main(String[] args) {
         System.out.println("hi");
 
-        Stack stack = new Stack();
-        stack.add(900);
-        stack.add(800);
-        stack.add(700);
-        stack.add(600);
-        stack.add(500);
-        stack.add(400);
-        stack.add(300);
+
 
 
         int arr[] = new int[7];
