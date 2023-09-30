@@ -4,17 +4,23 @@ public class TestDoublyLinkList {
     public static void main(String[] args) {
         System.out.println("hi");
 
-        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        /*DoublyLinkedList<Integer> doublyLinkedList = new DoublyLinkedList<Integer>();
         doublyLinkedList.addNode(10);
         doublyLinkedList.addNode(20);
         doublyLinkedList.addNode(30);
-        doublyLinkedList.addNode(40);
+        doublyLinkedList.addNode(40);*/
 
+        DoublyLinkedList<String> doublyLinkedList = new DoublyLinkedList<String>();
+        doublyLinkedList.addNode("A");
+        doublyLinkedList.addNode("B");
+        doublyLinkedList.addNode("C");
+        doublyLinkedList.addNode("D");
+        doublyLinkedList.addNode("E");
         doublyLinkedList.display();
 
-        doublyLinkedList.addNodeAtHead(50);
+        doublyLinkedList.addNodeAtHead("Y");
         doublyLinkedList.display();
-        doublyLinkedList.addNodeAtHead(60);
+        doublyLinkedList.addNodeAtHead("Z");
         doublyLinkedList.display();
 
         System.out.println("");

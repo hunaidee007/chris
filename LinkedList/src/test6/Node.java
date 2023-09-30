@@ -1,7 +1,7 @@
 package test6;
 
-public class Node {
-    int data;
+public class Node<K> {
+    K data;
 
     Node next;
 

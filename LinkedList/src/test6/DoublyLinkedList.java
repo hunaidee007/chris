@@ -1,14 +1,14 @@
 package test6;
 
-public class DoublyLinkedList {
+public class DoublyLinkedList<K> {
 
-    Node head;
+    Node<K> head;
 
     int size;
 
-    public void addNode(int data) {
-        Node pointer = head;
-        Node newNode = new Node();
+    public void addNode(K data) {
+        Node<K> pointer = head;
+        Node<K> newNode = new Node<K>();
         newNode.data = data;
 
         if (head == null) {
@@ -33,7 +33,7 @@ public class DoublyLinkedList {
         }
     }
 
-    public void addNodeAtHead(int data) {
+    public void addNodeAtHead(K data) {
         Node newNode = new Node();
         newNode.data = data;
         if (head == null) {
