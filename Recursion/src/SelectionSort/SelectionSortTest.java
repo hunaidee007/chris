@@ -5,11 +5,14 @@ public class SelectionSortTest {
         System.out.println("hi");
 
         int arr[] = {5, 2, 1, 10, 4, -100, -150, 800};
+
+        System.out.println("Length of arra:" + arr.length);
         display(arr);
         sort(arr);
     }
 
     private static void sort(int[] arr) {
+        int iteration=0;
 
 
         for (int index = 0; index < arr.length; index++) {
@@ -24,6 +27,7 @@ public class SelectionSortTest {
 
             // Compare from the next element till the last element
             for(int i = index+1; i <arr.length-1; i++) {
+                iteration++;
                 if(arr[i+1] < min) {
                     min = arr[i+1];
                     indexWhereMinimumIs = i+1;
@@ -36,6 +40,7 @@ public class SelectionSortTest {
             arr[indexWhereMinimumIs] = valueToBeSwapped;
 
             display(arr);
+            System.out.println("Iterations : " + iteration);
 
 
 
