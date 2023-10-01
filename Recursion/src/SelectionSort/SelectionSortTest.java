@@ -19,9 +19,11 @@ public class SelectionSortTest {
 
             //find the min
             int min = arr[index];
-            //TODO
+
             int indexWhereMinimumIs =index;
-            for(int i = index; i <arr.length-1; i++) {
+
+            // Compare from the next element till the last element
+            for(int i = index+1; i <arr.length-1; i++) {
                 if(arr[i+1] < min) {
                     min = arr[i+1];
                     indexWhereMinimumIs = i+1;
