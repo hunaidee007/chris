@@ -1,0 +1,62 @@
+C:\Users\tutor\.jdks\openjdk-20.0.2\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2.1\lib\idea_rt.jar=61032:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath C:\Users\tutor\chris\chris\Palindrome\out\production\Palindrome Main
+
+----------------
+Main Menu:
+1. Test character-by-character palindrome
+2. Test word-by-word palindrome
+3. Exit program
+Enter option number:
+1
+You selected: 1
+Enter String:
+Eva, tttttttttttttt I see bees in a tttttttttttttt?
+Judgment:Not Palindrome
+
+----------------
+Main Menu:
+1. Test character-by-character palindrome
+2. Test word-by-word palindrome
+3. Exit program
+Enter option number:
+2
+You selected: 2
+Enter String:
+you asdasddddasd cage a swallow, can’t tttttttttttttt, but ttttttttttttt2 can’t swallow a cage, asdasddddasd you
+you asdasddddasd cage a swallow can’t ttttttttttttt2 but tttttttttttttt can’t swallow a cage asdasddddasd you
+Judgment:Not Palindrome
+
+----------------
+Main Menu:
+1. Test character-by-character palindrome
+2. Test word-by-word palindrome
+3. Exit program
+Enter option number:
+2
+You selected: 2
+Enter String:
+you asdasddddasd cage a swallow, can’t tttttttttttttt, but ttttttttttttt can’t swallow a cage, asdasddddasd you
+you asdasddddasd cage a swallow can’t ttttttttttttt but tttttttttttttt can’t swallow a cage asdasddddasd you
+Judgment:Not Palindrome
+
+----------------
+Main Menu:
+1. Test character-by-character palindrome
+2. Test word-by-word palindrome
+3. Exit program
+Enter option number:
+2
+You selected: 2
+Enter String:
+you asdasddddasd cage a swallow, can’t tttttttttttttt, but tttttttttttttt can’t swallow a cage, asdasddddasd you
+you asdasddddasd cage a swallow can’t tttttttttttttt but tttttttttttttt can’t swallow a cage asdasddddasd you
+Judgment:Palindrome
+
+----------------
+Main Menu:
+1. Test character-by-character palindrome
+2. Test word-by-word palindrome
+3. Exit program
+Enter option number:
+3
+
+Process finished with exit code 0
