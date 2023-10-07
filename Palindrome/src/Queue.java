@@ -46,37 +46,44 @@ public class Queue {
 
     public String getElementByPosition(int index) {
         Node pointer = head;
-        System.out.println(index);
+        if (index == 0) {
+            return head.data;
+        }
+        //System.out.println(index);
+        int count = 0;
 
-        index--;
-        while (index != 0) {
-            //if (pointer.next != null) {
-                pointer = pointer.next;
-                index--;
-           // }
+
+        while (count != index) {
+           /* if (pointer.next == null) {
+                return pointer.data;
+            }*/
+            pointer = pointer.next;
+            count++;
+
 
         }
 
-        System.out.println("Found data:" + pointer.data);
+        // System.out.println("Found data:" + pointer.data);
 
         return pointer.data;
 
     }
 
-    public static void isPalindrome(Queue queue) {
+    public static boolean isPalindrome(Queue queue) {
         int size = queue.size;
+        boolean isSame = true;
 
         for (int i = 0; i < size / 2; i++) {
-            System.out.println("Comapring : " +
-                    queue.getElementByPosition(i)
-                    + " - " + queue.getElementByPosition(size - i));
+            //System.out.println("Comapring : " + queue.getElementByPosition(i) + " - " + queue.getElementByPosition((size - 1) - i));
             if (queue.getElementByPosition(i)
-                    .equals(queue.getElementByPosition(size - i))) {
-                System.out.println("same");
+                    .equals(queue.getElementByPosition((size - 1) - i))) {
+               // System.out.println("same");
             } else {
-                System.out.println("not same");
+                return false;
             }
 
         }
+
+        return isSame;
     }
 }

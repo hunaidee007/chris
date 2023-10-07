@@ -13,55 +13,49 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    System.out.println("You selected: " + option);  // Output user input
-                    Scanner stringScanner = new Scanner(System.in);  // Create a Scanner object
-                    System.out.println("Enter String:");
-                    String enteredString = stringScanner.nextLine();
-
-                    System.out.println("You entered:" + enteredString);
-                    enteredString = enteredString.replace(",","");
+                    String enteredString = askUserForValues(option);
                     enteredString = enteredString.replace(" ","");
-                    enteredString = enteredString.replace("?","");
-
-                    System.out.println(enteredString);
 
                     char arr[] = enteredString.toCharArray();
                     Queue queue = new Queue();
                     for(char word : arr) {
                         queue.add(String.valueOf(word).toLowerCase());
                     }
-                    queue.display();
 
-                    Queue.isPalindrome(queue);
-
+                    boolean isPalindrome = Queue.isPalindrome(queue);
+                    String result = isPalindrome ? "Palindrome" : "Not Palindrome";
+                    System.out.println("Judgment:" + result);
 
 
                     break;
                 case 2:
+                    enteredString = askUserForValues(option);
+
+                    String words[] = enteredString.split(" ");
+                    Queue wordQueue = new Queue();
+                    for(String word : words) {
+                        wordQueue.add(String.valueOf(word).toLowerCase());
+                    }
+                    wordQueue.display();
+
+                    isPalindrome = Queue.isPalindrome(wordQueue);
+                    result = isPalindrome ? "Palindrome" : "Not Palindrome";
+                    System.out.println("Judgment:" + result);
                     break;
                 case 3:
                     break;
-
             }
-
-
-
         } while (option != 3);
+    }
 
-
-
-
-
-       /* Queue queue = new Queue();
-
-        queue.add("Hi");
-        queue.add("this");
-        queue.add("is");
-        queue.add("me");
-        queue.add("ok");
-
-        queue.display();*/
-
+    private static String askUserForValues(int option) {
+        System.out.println("You selected: " + option);  // Output user input
+        Scanner stringScanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter String:");
+        String enteredString = stringScanner.nextLine();
+        enteredString = enteredString.replace(",","");
+        enteredString = enteredString.replace("?","");
+        return enteredString;
     }
 
     public static void displayMenu() {
