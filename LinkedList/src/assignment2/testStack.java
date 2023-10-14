@@ -109,6 +109,26 @@ public class testStack {
         Stack<String> reverseStack = flipStack(stringStack);
         topToBottom(reverseStack);
 
+        // Find element
+        myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Search - Enter All Elements : ");
+
+        elements = myObj.nextLine();  // Read user input
+        elementArray = elements.split(" ");
+
+        Stack<Integer> integerStackToBeSearched = new Stack<>();
+        for (String element : elementArray) {
+            integerStackToBeSearched.push(Integer.parseInt(element));
+        }
+        myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter the element to be searched : ");
+
+        int elementToBeSearched = myObj.nextInt();
+
+        boolean found = searchStack(integerStackToBeSearched, elementToBeSearched);
+
+        System.out.println("Element Found : " + found);
+
 
     }
 
@@ -135,15 +155,26 @@ public class testStack {
         }
     }
 
-    public static Stack flipStack(Stack stackToBeReversed){
+    public static Stack flipStack(Stack stackToBeReversed) {
 
-            Stack reverStack = new Stack();
-            for(int counter = stackToBeReversed.size; counter >=1; counter--) {
+        Stack reverStack = new Stack();
+        for (int counter = stackToBeReversed.size; counter >= 1; counter--) {
 
-                reverStack.push(stackToBeReversed.peek());
-                stackToBeReversed.pop();
+            reverStack.push(stackToBeReversed.peek());
+            stackToBeReversed.pop();
+        }
+
+        return reverStack;
+    }
+
+    public static boolean searchStack(Stack<Integer> stack, int target) {
+        Node<Integer> pointer = stack.top;
+        while (pointer != null) {
+            if (target == pointer.data.intValue()) {
+                return true;
             }
-
-            return  reverStack;
+            pointer = pointer.next;
+        }
+        return false;
     }
 }
