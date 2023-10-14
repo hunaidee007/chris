@@ -14,7 +14,7 @@ public class Main {
             switch (option) {
                 case 1:
                     String enteredString = askUserForValues(option);
-                    enteredString = enteredString.replace(" ","");
+                    enteredString = removeChrachters(enteredString,"[^a-zA-Z0-9]");
 
                     char arr[] = enteredString.toCharArray();
                     Queue queue = new Queue();
@@ -30,6 +30,7 @@ public class Main {
                     break;
                 case 2:
                     enteredString = askUserForValues(option);
+                    enteredString = removeChrachters(enteredString,"[^a-zA-Z0-9\s]");
 
                     String words[] = enteredString.split(" ");
                     Queue wordQueue = new Queue();
@@ -53,9 +54,11 @@ public class Main {
         Scanner stringScanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("Enter String:");
         String enteredString = stringScanner.nextLine();
-        enteredString = enteredString.replace(",","");
-        enteredString = enteredString.replace("?","");
         return enteredString;
+    }
+
+    private static String removeChrachters(String text,String regex){
+        return text.replaceAll(regex,"");
     }
 
     public static void displayMenu() {
