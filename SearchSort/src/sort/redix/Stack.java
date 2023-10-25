@@ -49,6 +49,8 @@ public class Stack {
         pointer.next = null;
         pointer = null;
 
+        size--;
+
         return dataToBePoped;
 
     }
