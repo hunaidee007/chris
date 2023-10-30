@@ -26,7 +26,7 @@ public class TestRedix {
 
             }
 
-            // TODO pop elements
+
             int indexOfArray = 0;
             for (int index = 0; index <= stacks.length - 1; index++) {
                 while (stacks[index] != null && !stacks[index].isEmpty()) {
