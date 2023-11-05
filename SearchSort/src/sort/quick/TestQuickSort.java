@@ -11,7 +11,8 @@ public class TestQuickSort {
 
     public static void main(String[] args) {
         //int arr[] = {34, 12, 4, 56, 78, 45, 23, 89, 9, 1, 67};
-        int arr[] = {100, 200, 70, 10, 5, 90, 80, 60, 50, 40, 20};
+        int arr[] = {3, 9, 6, 2, 5, 8, 1, 7, 4};
+        //int arr[] = {100, 200, 70, 10, 5, 90, 80, 60, 50, 40, 20};
 
 
         extracted(arr, 0, arr.length - 1);
@@ -20,11 +21,11 @@ public class TestQuickSort {
     }
 
     private static void extracted(int[] arr, int start, int end) {
-        System.out.println("Start : "+start + ", End : "+ end);
+        System.out.println("Start : " + start + ", End : " + end);
 
         //Rule 1. Compare first and last
         if (arr[start] > arr[end]) {
-            System.out.println("Swapping : " +arr[start] +" - " + arr[end]);
+            System.out.println("Swapping : " + arr[start] + " - " + arr[end]);
             int temp = arr[start];
             arr[start] = arr[end];
             arr[end] = temp;
@@ -36,71 +37,65 @@ public class TestQuickSort {
 
         System.out.println("pivot : " + pivot);
 
-        int partitionPosition = sortAndPartition(arr, pivot, start, start + 1, end);
+        int lowPointer = start + 1;
+        int highPointer = end;
 
 
-        if ((end - start) <= 1) {
-            return;
+        while (lowPointer <= highPointer) {
+            // Step 4: Scan list from left to right for x(j) >= left value. //low pointer
+            while (lowPointer <= end && arr[lowPointer] < pivot) {
+                lowPointer++;
+            }
+            // Step 5: Scan list from right to left for x(k) <= left value. //high pointer
+            while (highPointer >= start && arr[highPointer] > pivot) {
+                highPointer--;
+            }
+            if (lowPointer < highPointer) {
+                // Step 6: If (j < k) Then Swap (x(j), x(k)) and continue scanning
+                int temp = arr[lowPointer];
+                arr[lowPointer] = arr[highPointer];
+                arr[highPointer] = temp;
+                lowPointer++;
+                highPointer--;
+            }
         }
-        print(arr);
-        System.out.println("Starting Left side");
-        extracted(arr, start, partitionPosition - 1);
-        System.out.println("Ending Left side");
-        print(arr);
-        System.out.println("Starting Right side");
 
-        extracted(arr, partitionPosition + 1, end);
-        System.out.println("Ending Right side");
-        print(arr);
-
-
-    }
-
-    private static int sortAndPartition(int[] arr, int pivot, int pivotPosition, int j, int k) {
-
-        //Rule 6.
-        if (j >= k) {
-            if (arr[k] > pivot) {
-                return 1;
+        // Step 7: If (j >= k) // pointer crossed each other
+        if (highPointer < lowPointer) {
+            System.out.println("Pointers crossed each other : " + highPointer + " " + lowPointer);
+            if (arr[highPointer] >= pivot) {
+                // No Swap and left is the split element.
+                return;
             } else {
-                int temp = arr[k];
-                arr[k] = pivot;
-                arr[pivotPosition] = temp;
-                return k;
+
+
+                int temp = arr[start];
+                arr[start] = arr[highPointer];
+                arr[highPointer] = temp;
             }
-        }
-
-        //Find number larger than Pivot
-        int leftIndex = j;
-        int leftNumber = -1;
-        for (int i = j; i <= k; i++) {
-            if (arr[i] > pivot) {
-                leftIndex = i;
-                leftNumber = arr[i];
-                break;
+            if (highPointer == start + 1) {
+                //extracted(arr, highPointer + 1, end);
+                System.out.println("higherpointer = start+1");
             }
-        }
 
-        int rightIndex = k;
-        int rightNumber = -1;
-        for (int l = k; l >= j; l--) {
-            if (arr[l] < pivot) {
-                rightIndex = l;
-                rightNumber = arr[l];
-                break;
-            }
-        }
 
-        // Swap the 2 numbers
-        if (leftNumber != -1 && rightNumber != -1) {
-            arr[leftIndex] = rightNumber;
-            arr[rightIndex] = leftNumber;
         }
 
 
+        System.out.println("Start Left : ");
+        extracted(arr, start, highPointer - 1);
 
-        int pivotPositionSum = sortAndPartition(arr, pivot, pivotPosition, leftIndex + 1, rightIndex - 1);
-        return pivotPositionSum;
+        System.out.println("End Left");
+        print(arr);
+
+
+        System.out.println("Start Right");
+        extracted(arr, highPointer + 1, end);
+        print(arr);
+
+        System.out.println("End Right");
 
     }
+
+
 }
