@@ -41,6 +41,10 @@ public class TestBST {
         // In Progress (Still not working as expected)
         binarySearchTree.removeDuplicates();
 
+        System.out.println();
+
+        binarySearchTree.display();
+        System.out.println();
 
 
 
