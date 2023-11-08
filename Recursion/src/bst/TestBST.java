@@ -23,6 +23,12 @@ public class TestBST {
         binarySearchTree.add(52);
         binarySearchTree.add(57);
         binarySearchTree.add(70);
+        binarySearchTree.add(20);
+        binarySearchTree.add(60);
+        binarySearchTree.add(59);
+        binarySearchTree.add(19);
+        binarySearchTree.add(60);
+
 
 
 
