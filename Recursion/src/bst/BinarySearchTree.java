@@ -88,6 +88,7 @@ public class BinarySearchTree {
             Node parentFound = findParentOfDuplicate(duplicateNode, head);
             System.out.println("-Parent Found for @"+ duplicateNode +" at @ " + parentFound + " - " + parentFound.data);
 
+            //Deletion Logic
             if (duplicateNode.data > parentFound.data) {
                 System.out.println("**if duplicate > parent (right) then attach left of duplicate to right of parent");
                 parentFound.right = duplicateNode.left;
