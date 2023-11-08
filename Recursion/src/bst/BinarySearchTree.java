@@ -62,26 +62,7 @@ public class BinarySearchTree {
         // Print pointer
         System.out.println("Finding duplicate for " + pointer + " - " + +pointer.data);
 
-      //  findDuplicateAndDelete(pointer);
-
-        Node duplicateNode = findDuplicate(pointer, head);
-        //System.out.println("duplicate found @ " + duplicateNode + " - " + duplicateNode.data);
-        if (duplicateNode != pointer && pointer.data == duplicateNode.data) {
-                System.out.println("Duplicate Found @ " + duplicateNode + " - " + duplicateNode.data);
-                 Node dupFound = findDuplicate(duplicateNode, duplicateNode);
-                // Delete the duplicate
-                Node parentFound = findParentOfDuplicate(duplicateNode, head);
-                System.out.println("Parent Found @ " + parentFound + " - " + parentFound.data);
-
-                if (duplicateNode.data > parentFound.data) {
-                    System.out.println("if duplicate > parent (right) then attach left of duplicate to right of parent");
-                    parentFound.right = duplicateNode.left;
-                } else if (duplicateNode.data <= parentFound.data) {
-                    System.out.println("if duplicate is =< than parent, attach the left of duplicate to the left of parent");
-                    parentFound.left = duplicateNode.left;
-                }
-
-        }
+        findDuplicateAndDelete(pointer, head);
 
         if (pointer.left != null) {
             // Go Left
@@ -96,11 +77,30 @@ public class BinarySearchTree {
 
     }
 
-    private void findDuplicateAndDelete(Node pointer) {
+    private void findDuplicateAndDelete(Node pointer, Node parentNodeToSearchDuplicate) {
+        Node duplicateNode = findDuplicate(pointer, parentNodeToSearchDuplicate);
+        //System.out.println("duplicate found @ " + duplicateNode + " - " + duplicateNode.data);
+        if (duplicateNode != pointer && pointer.data == duplicateNode.data) {
+            System.out.println("-Duplicate Found @ " + duplicateNode + " - " + duplicateNode.data);
+            System.out.println("--Recursively searching again with parent as  @ " + pointer + " for data - " + pointer.data);
+
+            findDuplicateAndDelete(duplicateNode, duplicateNode);
+            Node parentFound = findParentOfDuplicate(duplicateNode, head);
+            System.out.println("-Parent Found for @"+ duplicateNode +" at @ " + parentFound + " - " + parentFound.data);
+
+            if (duplicateNode.data > parentFound.data) {
+                System.out.println("**if duplicate > parent (right) then attach left of duplicate to right of parent");
+                parentFound.right = duplicateNode.left;
+            } else if (duplicateNode.data <= parentFound.data) {
+                System.out.println("**if duplicate is =< than parent, attach the left of duplicate to the left of parent");
+                parentFound.left = duplicateNode.left;
+            }
+
+        }
     }
 
     private Node findParentOfDuplicate(Node duplicateNode, Node pointer) {
-        if (pointer.left!=null && pointer.left != duplicateNode && duplicateNode.data <= pointer.data) {
+        if (pointer.left != null && pointer.left != duplicateNode && duplicateNode.data <= pointer.data) {
             // Go Left
             pointer = findParentOfDuplicate(duplicateNode, pointer.left);
         }
@@ -108,7 +108,7 @@ public class BinarySearchTree {
         if (pointer.data == duplicateNode.data && pointer == duplicateNode) {
             return pointer;
         }
-        if (pointer.right!=null &&  pointer.right != duplicateNode && duplicateNode.data > pointer.data) {
+        if (pointer.right != null && pointer.right != duplicateNode && duplicateNode.data > pointer.data) {
             // Go Right
             pointer = findParentOfDuplicate(duplicateNode, pointer.right);
         }
@@ -121,7 +121,7 @@ public class BinarySearchTree {
             // Go Left
             pointer = findDuplicate(duplicateOf, pointer.left);
         }
-        if(duplicateOf.data == pointer.data && pointer.left != null && duplicateOf == pointer) {
+        if (duplicateOf.data == pointer.data && pointer.left != null && duplicateOf == pointer) {
             // Go Left
             pointer = findDuplicate(duplicateOf, pointer.left);
         }
