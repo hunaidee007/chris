@@ -1,11 +1,11 @@
 
 public class Main {
-    static int[] keys =/* {1234, 8234, 7867, 1009, 5438, 4312, 3420, 9487, 5418, 5299,
+    static int[] keys = {1234, 8234, 7867, 1009, 5438, 4312, 3420, 9487, 5418, 5299,
             5078, 8239, 1208, 5098, 5195, 5329, 4543, 3344, 7698, 5412,
             5567, 5672, 7934, 1254, 6091, 8732, 3095, 1975, 3843, 5589,
             5439, 8907, 4097, 3096, 4310, 5298, 9156, 3895, 6673, 7871,
-            5787, 9289, 4553, 7822, 8755, 3398, 6774, 8289, 7665, 5523};*/
-            {20, 34, 45, 70, 56};
+            5787, 9289, 4553, 7822, 8755, 3398, 6774, 8289, 7665, 5523};
+            //{20, 34, 45, 70, 56};
 // {50, 700, 76, 85, 92, 73, 101};
 
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Main {
 
         //HF1(keys);
 
-       // HF2(keys);
+        // HF2(keys);
 
         HF3(keys);
 
@@ -106,27 +106,39 @@ public class Main {
     }
 
     private static void HF3(int[] keys) {
-        int[][] Table = new int[11][2];
+        int[][] Table = new int[keys.length][2];
+
         System.out.println("Table Length : " + Table.length);
         for (int key : keys) {
-            int modPosition = (key % Table.length);
-            if (Table[modPosition][0] == 0) {
+            int firstHash = (key % Table.length);
+            if (Table[firstHash][0] == 0) {
                 // Table[modPosition] = new int[2];
-                Table[modPosition][0] = key;
-                Table[modPosition][1] = 0;
+                Table[firstHash][0] = key;
+                Table[firstHash][1] = 0;
             } else {
-               /* int prob = 0;
-                int index = modPosition;
-                while (Table[index][0] != 0) {
-                    prob++;
+                // calculate second hash
+                int finalIndex = firstHash;
+                int index = 0;
+
+                int secondHash = 30 - (key % 25);
+                while (index <= 50 && Table[finalIndex][0] != 0) {
                     index++;
-                    if (index == Table.length) {
-                        index = 0;
-                    }
+                    finalIndex = (firstHash + (index * secondHash)) % Table.length;
+
                 }
-                Table[index][0] = key;
-                Table[index][1] = prob;*/
+                if (Table[finalIndex][0] == 0) {
+                    Table[finalIndex][0] = key;
+                    Table[finalIndex][1] = index;
+                } else if (index >= 50) {
+                    System.out.println("Unable to hash key " + key + " to the table");
+                }
+
+
             }
         }
+        System.out.println(" ------ Displaying ------");
+        displayArray(Table);
+
+        addProbes(Table);
     }
 }
