@@ -11,11 +11,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Keys Length : " + keys.length);
 
-        //HF1(keys);
+       /* HF1(keys);
 
-        // HF2(keys);
+        HF2(keys);
 
-        HF3(keys);
+        HF3(keys);*/
+
+        HF4(keys);
 
 
     }
@@ -121,6 +123,43 @@ public class Main {
                 int index = 0;
 
                 int secondHash = 30 - (key % 25);
+                while (index <= 50 && Table[finalIndex][0] != 0) {
+                    index++;
+                    finalIndex = (firstHash + (index * secondHash)) % Table.length;
+
+                }
+                if (Table[finalIndex][0] == 0) {
+                    Table[finalIndex][0] = key;
+                    Table[finalIndex][1] = index;
+                } else if (index >= 50) {
+                    System.out.println("Unable to hash key " + key + " to the table");
+                }
+
+
+            }
+        }
+        System.out.println(" ------ Displaying ------");
+        displayArray(Table);
+
+        addProbes(Table);
+    }
+
+    private static void HF4(int[] keys) {
+        int[][] Table = new int[keys.length][2];
+
+        System.out.println("Table Length : " + Table.length);
+        for (int key : keys) {
+            int firstHash = (key % 47);
+            if (Table[firstHash][0] == 0) {
+                // Table[modPosition] = new int[2];
+                Table[firstHash][0] = key;
+                Table[firstHash][1] = 0;
+            } else {
+                // calculate second hash
+                int finalIndex = firstHash;
+                int index = 0;
+
+                int secondHash = 23 - (key % 11);
                 while (index <= 50 && Table[finalIndex][0] != 0) {
                     index++;
                     finalIndex = (firstHash + (index * secondHash)) % Table.length;
