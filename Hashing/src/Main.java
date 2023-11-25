@@ -13,11 +13,12 @@ public class Main {
 
        /* HF1(keys);
 
-        HF2(keys);
+        HF2(keys);*/
 
-        HF3(keys);*/
+        //HF3(keys);
 
-        HF4(keys);
+       // HF4(keys);
+        HF5(keys);
 
 
     }
@@ -144,6 +145,17 @@ public class Main {
         addProbes(Table);
     }
 
+    private static int proposedHashFunction4(int key) { //using linear probing 187
+        int[] primes = {2,3,5,7,11,13,17,21,23,27,31,37,41,43};
+        int hashValue = 0;
+        String stringKey = "" + key;
+        for(int i = stringKey.length() - 1; i >= 0; i--) {
+            int intAtPosition =  stringKey.charAt(i) - '0';
+            hashValue +=  intAtPosition * primes[i % primes.length];
+        }
+        return hashValue % 50;
+    }
+
     private static void HF4(int[] keys) {
         int[][] Table = new int[keys.length][2];
 
@@ -160,6 +172,44 @@ public class Main {
                 int index = 0;
 
                 int secondHash = 23 - (key % 11);
+                while (index <= 50 && Table[finalIndex][0] != 0) {
+                    index++;
+                    finalIndex = (firstHash + (index * secondHash)) % Table.length;
+
+                }
+                if (Table[finalIndex][0] == 0) {
+                    Table[finalIndex][0] = key;
+                    Table[finalIndex][1] = index;
+                } else if (index >= 50) {
+                    System.out.println("Unable to hash key " + key + " to the table");
+                }
+
+
+            }
+        }
+        System.out.println(" ------ Displaying ------");
+        displayArray(Table);
+
+        addProbes(Table);
+    }
+
+    private static void HF5(int[] keys) {
+        int[][] Table = new int[keys.length][2];
+
+        System.out.println("Table Length : " + Table.length);
+        for (int key : keys) {
+            int firstHash = proposedHashFunction4(key);
+            System.out.println("Index :" + firstHash +" for key : " + key);
+            if (Table[firstHash][0] == 0) {
+                // Table[modPosition] = new int[2];
+                Table[firstHash][0] = key;
+                Table[firstHash][1] = 0;
+            } else {
+                // calculate second hash
+                int finalIndex = firstHash;
+                int index = 0;
+
+                int secondHash = 29 - (key % 30);
                 while (index <= 50 && Table[finalIndex][0] != 0) {
                     index++;
                     finalIndex = (firstHash + (index * secondHash)) % Table.length;
